@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 // import './App.css';
+import { Button } from "@mui/material"
 
 const App = () => {
   const [chosenType, setChosenType] = useState(null);
@@ -15,6 +16,13 @@ const App = () => {
     const results = {
       method: 'GET',
       url: 'http://localhost:3001/results',
+      params: {
+        type: chosenType,
+        mag: chosenMag,
+        location: chosenLocation,
+        dateRange: chosenDateRange,
+        sortOption: chosenSortOption,
+      },
     };
     axios
       .request(results)
@@ -110,6 +118,7 @@ const App = () => {
               </select>
             </li>
             <li>
+              <Button> Hello </Button>
               <button onClick={sendSearchRequest}>Search</button>
             </li>
           </ul>
